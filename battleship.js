@@ -27,7 +27,14 @@ var model = {
 
         for (var i = 0; i < this.numShips; i++) {
             var ship = this.ships[i];
+            locations = ship.locations;
+            var index = locations.indexOf(guess);
+            if (index >= 0) {
+                ship.hits[index] = "hit";
+                return true;
+            }
         }
+        return false;
     }       
 };
 
