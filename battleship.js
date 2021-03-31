@@ -27,15 +27,30 @@ var model = {
 
         for (var i = 0; i < this.numShips; i++) {
             var ship = this.ships[i];
-            locations = ship.locations;
-            var index = locations.indexOf(guess);
+            var index = ship.locations.indexOf(guess);
             if (index >= 0) {
                 ship.hits[index] = "hit";
+                view.displayHit(guess);
+                view.displayMessage("HIT!");
+                if (this.shipsSunk(ship)) {
+                    view.displayMessage("You sank my Battleship!");
+                    this.shipsSunk++;
+                }
                 return true;
             }
         }
+        view.displayMiss(guess);
+        view.displayMessage("You missed.");
         return false;
-    }       
+    },
+    isSunk: function(ship) {
+        for (var i = 0; i < this.shipLength; i++) {
+            if (ship.hits[i] !== "hit") {
+                return false;
+            }
+        }
+        return true;
+    }
 };
 
 view.displayMiss("00");
