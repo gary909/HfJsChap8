@@ -53,6 +53,14 @@ var model = {
     }
 };
 
+var controller = {
+    guesses: 0,
+
+    processGuess: function(guess) {
+        // more code will go here
+    }
+};
+
 // view.displayMiss("00");
 // view.displayHit("34");
 // view.displayMiss("55");
