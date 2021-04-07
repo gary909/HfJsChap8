@@ -50,7 +50,39 @@ var model = {
             }
         }
         return true;
-    }
+    },
+
+    generateShipLocations: function() {
+        var locations;
+        for (var i = 0; i < this.numShips; i++) {
+            do {
+                locations = this.generateShip();
+            } while (this.collision(locations));
+            this.ships[i].locations = locations;
+        }
+    },
+
+    generateShip: function() {
+        var direction = Math.floor(Math.random() * 2);
+        var row;
+        var col;
+        if (direction === 1) {
+            // generate start loc for Horizontal ship
+        } else {
+            // generate start loc for Vertical ship
+        }
+
+        var newShipLocations = [];
+        for (var i = 0; i < this.shipLength; i++) {
+            if (direction === 1) {
+                // add location to array for Horiz ship
+            } else {
+                // add location to array for Vert ship
+            }
+        }
+        return newShipLocations;
+    },
+
 };
 
 var controller = {
